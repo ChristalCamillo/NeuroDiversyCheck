@@ -1,0 +1,89 @@
+---
+permalink: "/popup.html"
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Acessibilizar!</title>
+    <style>
+      :root {
+        --main-bg: #f9f9f9;
+        --main-text: #333;
+        --main-border: #ddd;
+        --error: #db0000;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--main-bg);
+        color: var(--main-text);
+        font-family: Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+        height: 600px;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .page {
+        width: 95%;
+        height: 95%;
+        max-width: 95%;
+        max-height: 95%;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .page-results {
+        justify-content: start;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid;
+        border-color: #000 #0000;
+        animation: l1 1s infinite;
+      }
+      @keyframes l1 {
+        to {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page page-init">
+      <h1>Analize a acessibilidade do seu site</h1>
+      <button>Analizar agora!</button>
+    </section>
+    <section class="page page-loading hidden">
+      <div class="loader"></div>
+    </section>
+    <section class="page page-results hidden">
+      <h1>Seus resultados</h1>
+      <p></p>
+    </section>
+
+    <input type="hidden" value="{{ env.openAiKey }}" id="openAiKey" />
+    <script src="content.js"></script>
+  </body>
+</html>
